@@ -7,7 +7,8 @@ import { MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Navi from '../navbar/Navi';
 import { useDispatch, useSelector } from "react-redux";
-import { favourite, removeFromFavorites, setisfav, setisfavfalse } from '../Redux/slice';
+import { addFavourite, favourite, removeFromFavorites, setisfav, setisfavfalse } from '../Redux/slice';
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 
 
@@ -17,35 +18,33 @@ import { favourite, removeFromFavorites, setisfav, setisfavfalse } from '../Redu
 const Singlemeal = () => {
     const { id } = useParams()
     const [data, setData] = useState('')
-    const isfav = useSelector((state)=>state.datafetch.isfav);
-    console.log(isfav);
+    const myfavourites=useSelector((state)=>state.datafetch.fav)
+
 
     const dispatch = useDispatch()
     useEffect(() => {
         let fetchData = async () => {
             let response = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
-            console.log(response);
+            console.log(response.data.meals,'fav');
             setData(response.data.meals[0])
-            // console.log(response.data);
+            console.log(response.data);
         }
         fetchData()
+    }, [id])
+    const isFavorite = myfavourites.find((item) => item.id === data.idMeal);
+    
 
+    const addToFav=()=>{
+        const newItem={id:data.idMeal,...data}
+        dispatch(addFavourite(newItem))
+       
+    }
+    const removeFav=(id)=>{
+        dispatch(removeFromFavorites(id))
 
-    }, [])
+    }
    console.log(data);
-        const removeFavorites=(data)=>{
-            dispatch(removeFromFavorites(data))
-            dispatch(setisfavfalse())
-        }
-        const handleAddFav=()=>{
-            dispatch(favourite(data))
-            dispatch(setisfav())
-            
-        }
-        const handleRemoveFav=()=>{
-            removeFavorites(data)
-        }
-
+   
    
     return (
 
@@ -57,14 +56,10 @@ const Singlemeal = () => {
                                 <img src={data.strMealThumb} alt="" />
                             </Card>
                             <Card className='detail-single'>
-                                <h2>{data.strMeal}
-                                {isfav ?
-                                 (<svg onClick={()=>handleRemoveFav(data)} xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
-</svg>):
-                                ( <svg onClick={()=>handleAddFav() } xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                                    </svg>)}
+                                <h2>{data.strMeal} <button  onClick={isFavorite ? ()=>removeFav(data.idMeal) : addToFav}>
+                                    {isFavorite ? <FaHeart style={{color:'red'}}/> : <FaRegHeart />}
+                               
+                                </button>
                                    
                                 </h2>
                                 <h3>Category : <span>{data.strCategory}</span>  </h3>
@@ -74,48 +69,20 @@ const Singlemeal = () => {
                                     <MDBContainer>
                                         <MDBRow>
 
-                                            <MDBCol size='md'>
-                                                <li>{data.strIngredient1}</li>
-                                            </MDBCol>
-                                            <MDBCol size='md'>
-                                                <li>{data.strIngredient2}</li>
-                                            </MDBCol>
-                                            <MDBCol size='md'>
-                                                <li>{data.strIngredient3}</li>
-                                            </MDBCol>
-                                        </MDBRow>
-                                        <MDBRow>
-                                            <MDBCol size='md'>
-                                                <li>{data.strIngredient4}</li>
-                                            </MDBCol>
-                                            <MDBCol size='md'>
-                                                <li>{data.strIngredient5}</li>
-                                            </MDBCol>
-                                            <MDBCol size='md'>
-                                                <li>{data.strIngredient6}</li>
-                                            </MDBCol>
-                                        </MDBRow>
-                                        <MDBRow>
-                                            <MDBCol size='md'>
-                                                <li>{data.strIngredient7}</li>
-                                            </MDBCol>
-                                            <MDBCol size='md'>
-                                                <li>{data.strIngredient8}</li>
-                                            </MDBCol>
-                                            <MDBCol size='md'>
-                                                <li>{data.strIngredient9}</li>
-                                            </MDBCol>
-                                        </MDBRow>
-                                        <MDBRow>
-                                            <MDBCol size='md'>
-                                                <li>{data.strIngredient10}</li>
-                                            </MDBCol>
-                                            <MDBCol size='md'>
-                                                <li>{data.strIngredient11}</li>
-                                            </MDBCol>
-                                            <MDBCol size='md'>
-                                                <li>{data.strIngredient12}</li>
-                                            </MDBCol>
+                                           <MDBCol>
+                                            <li>{data.strIngredient1}</li>
+                                            <li>{data.strIngredient2}</li>
+                                            <li>{data.strIngredient3}</li>
+                                            <li>{data.strIngredient4}</li>
+                                            <li>{data.strIngredient5}</li>
+                                            <li>{data.strIngredient6}</li>
+                                            <li>{data.strIngredient7}</li>
+                                            <li>{data.strIngredient8}</li>
+                                            <li>{data.strIngredient9}</li>
+                                            <li>{data.strIngredient10}</li>
+                                            <li>{data.strIngredient11}</li>
+                                            <li>{data.strIngredient12}</li>
+                                           </MDBCol>
                                         </MDBRow>
                                     </MDBContainer>
 

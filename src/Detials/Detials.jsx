@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 import Card from 'react-bootstrap/Card';
 import Navi from '../navbar/Navi';
 import './detials.css'
+import { SpinningCircles } from 'react-loading-icons';
 
 
 
@@ -25,7 +26,7 @@ const Detials = () => {
         <div className='d-flex flex-wrap  justify-content-center align-items-center main1 '>
             {data.meals && data.meals.length >0 ? (
                 data.meals.map((meals,index)=>(
-                    <Card className='  m-3 ' key={index} style={{ }}>
+                    <Card className=' detcard  m-3 ' key={index} style={{ }}>
       <Card.Img className='image-card' variant="top" src={meals.strMealThumb} />
       <Card.Body>
         <Card.Title className='text-center '>{meals.strMeal}</Card.Title>   
@@ -37,7 +38,7 @@ const Detials = () => {
                 ))
             ):
             (
-                <p>Data Loading......</p>
+               <div className='loading-spinner'></div>
             )}
             
 

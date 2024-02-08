@@ -48,10 +48,10 @@ const Search = () => {
 
         />
         <Button onClick={handleSubmit} className='search-button' variant="outline-success">Search</Button>
-      </Form> <div className='d-flex flex-wrap '>
+      </Form> <div className='d-flex flex-wrap justify-content-center  '>
         {data.meals && data.meals.length > 0 ? (
           data.meals.map((meals, index) => (
-            <Link to={`/single/${meals.idMeal}`}> <Card className='  m-3  ' key={index} style={{ width: '18rem' }}>
+            <Link className='text-decoration-none ' to={`/single/${meals.idMeal}`}> <Card className=' border-0    m-3  ' key={index} style={{ width: '18rem' ,backgroundColor:'#F06D26',color:'#fff'}}>
               <Card.Img className='image-card' variant="top" src={meals.strMealThumb} />
               <Card.Body>
                 <Card.Title className='text-center '>{meals.strMeal}</Card.Title>

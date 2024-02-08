@@ -1,5 +1,5 @@
 .main{
-  background-color: #FFE715;
+  background-color: #FFF;
 }
 .main h1{
     color: #101920;
@@ -12,8 +12,9 @@
 
 }
 .main .card{
-    background-color: #101920;
+    background-color: #F06D26;
     color: #fff;
+    box-shadow: 2px 3px 4px 3px black;
 }
 .image-card {
     transition: transform 0.3s;
@@ -31,3 +32,25 @@
     margin-inline-start: 46%;
     border-radius: 10px;
 }
+@keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 10px solid #f3f3f3; /* Light grey */
+    border-top: 10px solid #383636; /* Black */
+    border-radius: 50%;
+    animation: spinner 1.5s linear infinite;
+  }
+  .error-fav{
+    font-family: "Protest Riot", sans-serif;
+    font-size: 3rem;
+    margin-top: 5rem;
+  }
+  

@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
  
   fav: [],
-  isfav:false
+
 }
 
 export const counterSlice = createSlice({
@@ -12,27 +12,26 @@ export const counterSlice = createSlice({
   reducers: {
     
     
-      favourite: (state, action) => {
-        state.fav.push(action.payload)
-      },
-      setisfav:(state)=>{
-        state.isfav=true
+      addFavourite: (state, action) => {
+        const NewItem=action.payload
 
-
+        const isDuplicate=state.fav.find((item)=>item.id===NewItem.id)
+        if(!isDuplicate){
+          state.fav.push(NewItem)
+        }
       },
       removeFromFavorites: (state, action) => {
-        state.fav = state.fav.filter(item => item.id !== action.payload.id)
+        const remove = action.payload;
+        state.fav = state.fav.filter((item)=>item.id !== remove)
       },
-      setisfavfalse:(state)=>{
-        state.isfav=false
-
+     
 
       },
   },
-})
+)
 
 // Action creators are generated for each case reducer function
-export const { favourite,removeFromFavorites,setisfav,setisfavfalse } = counterSlice.actions
+export const { addFavourite,removeFromFavorites} = counterSlice.actions
 
 
 

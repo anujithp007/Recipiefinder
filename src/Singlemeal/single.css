@@ -9,10 +9,11 @@
 }
 .main-single .image-single img{
     margin: 15%;
+    border-radius: 30px;
     
 }
 .main-single .card{
-    background-color:  #ffe715 !important; ;
+    background-color:  #fff !important; ;
     border: none;
 }
 .detail-single h2{
@@ -44,13 +45,21 @@
     align-items: center;
 }
 .detail-single .ing {
-    background-color:#101920;
+    background-color:#F06D26;
     color: #fff;
     list-style-type: square;
+    border-radius: 14px;
+    box-shadow: 2px 2px 7px 4px black;
 }
 .detail-single .ing h2{
     color: #fff;
 }
+.detail-single button{
+    border: none;
+    background-color: transparent;
+}
+
+
 .instruction h2{
     text-align: center;
     font-family: noto;
@@ -58,8 +67,9 @@
     text-decoration: underline;
 }
 .instruction{
-    background-color: #101920;
+    background-color:#F06D26;
     color: #fff;
+    border-radius: 20px          
 }
 .instruction p{
     padding: 20px;

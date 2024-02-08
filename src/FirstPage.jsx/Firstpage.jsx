@@ -4,6 +4,7 @@ import axios from 'axios'
 import './fp.css'
 import { Link } from 'react-router-dom';
 import Navi from '../navbar/Navi';
+import SpinningCircles from 'react-loading-icons/dist/esm/components/spinning-circles';
 
 const Firstpage = () => {
     const [data,setData]=useState([])
@@ -34,10 +35,10 @@ const Firstpage = () => {
     <h1 className='text-center pt-2 '>Categories</h1>
     <Link to={'/search'}><button >Search Here</button></Link>
    
-    <div className='d-flex flex-wrap align-items-center justify-content-center mt-3  '>
+    <div className='d-flex  flex-wrap align-items-center justify-content-center mt-3  '>
       {data.categories && data.categories.length > 0 ? (
           data.categories.map((categories, index) => (
-             <Link to={`/detials/${categories.strCategory}`}> <Card  className='  m-3 ' key={index} style={{ width: '18rem' }}>
+             <Link className='text-decoration-none ' to={`/detials/${categories.strCategory}`}> <Card  className='  m-3 ' key={index} style={{ width: '18rem' }}>
       <Card.Img className='image-card' variant="top" src={categories.strCategoryThumb} />
       <Card.Body>
         <Card.Title className='text-center '>{categories.strCategory}</Card.Title>   
@@ -46,7 +47,8 @@ const Firstpage = () => {
     </Card> </Link>
   ))
   ) : (
-      <p>Data loading......</p>
+      <p><div className='loading-spinner'>
+        </div></p>
       )}
     </div>
       </div>

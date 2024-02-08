@@ -30,7 +30,7 @@ const Country = () => {
     </Card></Link>
   ))
 ) : (
-  <div>No results found.</div>
+  <div className='loading-spinner'></div>
 )}
 
 
