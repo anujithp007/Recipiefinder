@@ -1,0 +1,33 @@
+.main{
+  background-color: #FFE715;
+}
+.main h1{
+    color: #101920;
+    font-family: "Protest Riot", sans-serif;
+    font-weight: 400;
+   padding-top: 2rem;
+    
+
+
+
+}
+.main .card{
+    background-color: #101920;
+    color: #fff;
+}
+.image-card {
+    transition: transform 0.3s;
+    border-bottom: 1px solid white;
+}
+.image-card :hover{
+    transform: scale(1,1);
+}
+.main button{
+    background-color:#101920;
+    color: #fff;
+    border: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1rem;
+    margin-inline-start: 46%;
+    border-radius: 10px;
+}

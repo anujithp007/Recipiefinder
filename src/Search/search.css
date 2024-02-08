@@ -1,0 +1,21 @@
+.search-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+}
+.search-form input{
+   width: 50%;
+   padding: 20px 30px;
+}
+ ::placeholder{
+  text-align: center;
+  
+}
+.search-form button{
+    width: auto;
+    margin-top: 10px;
+    background-color: black;
+    color: #fff;
+}
