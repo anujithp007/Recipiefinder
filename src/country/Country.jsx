@@ -9,7 +9,7 @@ const Country = () => {
     const[data,setData]=useState([])
     useEffect(()=>{
         let fetchData=async()=>{
-            let response=await axios.get(`http://www.themealdb.com/api/json/v1/1/list.php?a=list`)
+            let response=await axios.get(`/api/json/v1/1/list.php?a=list`)
             setData(response.data)
             console.log(response.data);
         }
