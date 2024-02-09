@@ -70,18 +70,18 @@ const Singlemeal = () => {
                                         <MDBRow>
 
                                            <MDBCol>
-                                            <li>{data.strIngredient1}</li>
-                                            <li>{data.strIngredient2}</li>
-                                            <li>{data.strIngredient3}</li>
-                                            <li>{data.strIngredient4}</li>
-                                            <li>{data.strIngredient5}</li>
-                                            <li>{data.strIngredient6}</li>
-                                            <li>{data.strIngredient7}</li>
-                                            <li>{data.strIngredient8}</li>
-                                            <li>{data.strIngredient9}</li>
-                                            <li>{data.strIngredient10}</li>
-                                            <li>{data.strIngredient11}</li>
-                                            <li>{data.strIngredient12}</li>
+                                            <li>{data?.strIngredient1}</li>
+                                            <li>{data?.strIngredient2}</li>
+                                            <li>{data?.strIngredient3}</li>
+                                            <li>{data?.strIngredient4}</li>
+                                            <li>{data?.strIngredient5}</li>
+                                            <li>{data?.strIngredient6}</li>
+                                            <li>{data?.strIngredient7}</li>
+                                            <li>{data?.strIngredient8}</li>
+                                            <li>{data?.strIngredient9}</li>
+                                            <li>{data?.strIngredient10}</li>
+                                            <li>{data?.strIngredient11}</li>
+                                            <li>{data?.strIngredient12}</li>
                                            </MDBCol>
                                         </MDBRow>
                                     </MDBContainer>
