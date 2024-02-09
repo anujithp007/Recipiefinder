@@ -10,7 +10,7 @@ const CountryDetails = () => {
     const[data,setData]=useState('')
     useEffect(()=>{
         let fetchData= async()=>{
-            const response = await axios.get(`/api/json/v1/1/filter.php?a=${area}`);
+            const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`);
             setData(response.data)
             console.log(response.data);
         }

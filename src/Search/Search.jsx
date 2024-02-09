@@ -17,9 +17,9 @@ const Search = () => {
       let response;
 
       if (searched) {
-        response = await axios.get(`/api/json/v1/1/search.php?s=${title}`);
+        response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${title}`);
       } else {
-        response = await axios.get(`/api/json/v1/1/search.php?f=c`);
+        response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?f=c`);
       }
 
       setData(response.data);
