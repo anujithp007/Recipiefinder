@@ -4,29 +4,33 @@ import { useDispatch, useSelector } from 'react-redux'
 import Navi from '../navbar/Navi';
 import { Link } from 'react-router-dom';
 import img5 from './fotor-ai-2024020901141-removebg-preview.png'
-import { removeFromFavorites } from '../Redux/slice';
+import { removeFav2, removeFromFavorites } from '../Redux/slice';
 
 
 const Fav = () => {
+  
   const result = useSelector((state)=>state.datafetch.fav)
   console.log(result);
  
     const dispatch=useDispatch()
-    const handleremove=(id)=>{
-      dispatch(removeFromFavorites(id))
-    }
+  
+
+let handelremove=(id)=>{
+  dispatch(removeFav2(id))
+}
+
   return (
     <>
     <Navi/>
     <div className='d-flex flex-wrap  justify-content-center align-items-center main1 '>
         {result && result.length >0 ? (
-            result.map((meals,index)=>(
-                <Card className='  m-3 ' key={index} style={{ }}>
+          result.map((meals,index)=>(
+            <Card className='  m-3 ' key={index} style={{ }}>
+                  <button onClick={()=>{handelremove(meals.idMeal)}}>remove</button>
   <Card.Img className='image-card' variant="top" src={meals.strMealThumb} />
   <Card.Body>
     <Card.Title className='text-center '>{meals.strMeal}</Card.Title>   
        <Link to={`/single/${meals.idMeal}`}> <button>View Detials</button></Link>
-       {/* <button onClick={handleremove(meals.idMeal)}>remove</button> */}
       
   </Card.Body>
 </Card>

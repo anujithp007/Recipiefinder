@@ -22,16 +22,22 @@ export const counterSlice = createSlice({
       },
       removeFromFavorites: (state, action) => {
         const remove = action.payload;
+        console.log(remove,'gg');
         state.fav = state.fav.filter((item)=>item.id !== remove)
       },
-     
+      removeFav2:(state,action)=>{
+         const remove = action.payload;
+        console.log(remove,'gg1');
+        state.fav = state.fav.filter((item)=>item.id !== remove)
+      }
+    
 
       },
   },
 )
 
 // Action creators are generated for each case reducer function
-export const { addFavourite,removeFromFavorites} = counterSlice.actions
+export const { addFavourite,removeFromFavorites,removeFav2} = counterSlice.actions
 
 
 
